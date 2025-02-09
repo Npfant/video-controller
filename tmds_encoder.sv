@@ -1,16 +1,16 @@
 module tmds_encoder(
-    input clk,
-    input rst,
-    input [7:0] data,
-    input [1:0] ctrl,
-    input de,
-    output [9:0] tmds
+    input logic clk,
+    input logic rst,
+    input logic [7:0] data,
+    input logic [1:0] ctrl,
+    input logic de,
+    output logic [9:0] tmds
 )
 
-wire [3:0] d_ones = {3'b0,i_data[0]} + {3'b0,i_data[1]} + {3'b0,i_data[2]}
+logic [3:0] d_ones = {3'b0,i_data[0]} + {3'b0,i_data[1]} + {3'b0,i_data[2]}
         + {3'b0,i_data[3]} + {3'b0,i_data[4]} + {3'b0,i_data[5]}
         + {3'b0,i_data[6]} + {3'b0,i_data[7]};
-wire nor = ~(d_ones > 4'd4) || ((d_ones == 4'd4) && (i_data[0] == 0));
+logic nor = ~(d_ones > 4'd4) || ((d_ones == 4'd4) && (i_data[0] == 0));
 
 logic [8:0] stage_1;
 
@@ -28,7 +28,7 @@ logic signed [4:0] ones = {4'b0, stage_1[0]} + {4'b0, stage_1[1]} + {4'b0, stage
 logic signed [4:0] zeros = {4'b1, stage_1[0]} + {4'b1, stage_1[1]} + {4'b1, stage_1[2]} + {4'b1, stage_1[3]} + {4'b1, stage_1[4]} + {4'b1, stage_1[5]} + {4'b1, stage_1[6]} + {4'b1, stage_1[7]};
 logic signed [4:0] balance = ones - zeros;
 
-reg signed [4:0] bias;
+logic signed [4:0] bias;
 
 always @ (posedge clk) begin
     if(rst) begin
