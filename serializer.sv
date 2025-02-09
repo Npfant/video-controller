@@ -6,15 +6,15 @@
 // Learn more at https://projectf.io
 
 module serializer_10to1(
-    input  wire i_clk,          // parallel clock
-    input  wire i_clk_hs,       // high-speed clock (5 x i_clk when using DDR)
-    input  wire i_rst_oserdes,  // reset from async reset (active high)
-    input  wire [9:0] i_data,   // input parallel data
-    output wire o_data          // output serial data
+    input  logic i_clk,          // parallel clock
+    input  logic i_clk_hs,       // high-speed clock (5 x i_clk when using DDR)
+    input  logic i_rst_oserdes,  // reset from async reset (active high)
+    input  logic [9:0] i_data,   // input parallel data
+    output logic o_data          // output serial data
     );
 
     // use two OSERDES2 to serialize 10-bit TMDS data
-    wire shift1, shift2;  // wires between oserdes master and slave
+    logic shift1, shift2;  // wires between oserdes master and slave
 
     OSERDESE2 #(
         .DATA_RATE_OQ("DDR"),   // DDR, SDR
