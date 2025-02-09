@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog tmds_encoder tmds_encoder_tb.sv
+vlog tmds_encoder.sv tmds_encoder_tb.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus 

@@ -1,4 +1,4 @@
-module tmds_encoder_tb();
+module stimulus();
 
 logic clk;
 logic rst;
@@ -24,7 +24,7 @@ tmds_encoder test(
     clk, rst, data, ctrl, de, tmds
 );
 
-always @ (posedge clk or posedge rst) begin
+always @ (posedge clk) begin
     if (rst) begin
         cycle <= 0;
         data <= 0;
