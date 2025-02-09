@@ -1,13 +1,13 @@
 `timescale 1ns/1ps
 
 module scrn_pos #(parameter WIDTH = 12)(
-    input wire logic clk_pix,
-    input wire logic rst_pix,
-    output     logic [(WIDTH - 1):0] sx,
-    output     logic [(WIDTH - 1):0] sy,
-    output     logic hsync,
-    output     logic vsync,
-    output     logic de
+    input logic clk_pix,
+    input logic rst_pix,
+    output logic [(WIDTH - 1):0] sx,
+    output logic [(WIDTH - 1):0] sy,
+    output logic hsync,
+    output logic vsync,
+    output logic de
 );
 
     if (WIDTH == 12) begin
