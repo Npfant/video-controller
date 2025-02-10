@@ -1,6 +1,4 @@
-`timescale 1ns/1ps
-
-module scrn_pos #(parameter WIDTH = 12)(
+module scrn_pos #(parameter WIDTH = 10)(
     input logic clk_pix,
     input logic rst_pix,
     output logic [(WIDTH - 1):0] sx,
@@ -10,36 +8,23 @@ module scrn_pos #(parameter WIDTH = 12)(
     output logic de
 );
 
-    if (WIDTH == 12) begin
-        parameter H_ACT = 1279;
-        parameter H_FP = H_ACT + 110;
-        parameter H_S = H_FP + 40;
-        parameter H_TOT   = 1649;
-
-        parameter V_ACT = 719;
-        parameter V_FP = V_ACT + 5;
-        parameter V_S = V_FP + 5;
-        parameter V_TOT = 749;
-    end else if (WIDTH == 14) begin
-        parameter H_ACT = 1919;
-        parameter H_FP = H_ACT + 88;
-        parameter H_S = H_FP + 44;
-        parameter H_TOT = 2199;
-
-        parameter V_ACT = 1079;
-        parameter V_FP = V_ACT + 4;
-        parameter V_S = V_FP + 5;
-        parameter V_TOT = 1124;
-    end else begin
-        parameter H_ACT = 639;
-        parameter H_FP = H_ACT + 16;
-        parameter H_S = H_FP + 96;
-        parameter H_TOT = 799;
-
-        parameter V_ACT = 479;
-        parameter V_FP = V_ACT + 2;
-        parameter V_S = V_FP + 2;
-        parameter V_TOT = 524;
+    localparam H_ACT = (WIDTH == 12) ? 1279 : (WIDTH == 14) ? 1919 : 639;
+    localparam H_FP = (WIDTH == 12) ? (H_ACT + 110) : (WIDTH == 14) ? (H_ACT + 88) : (H_ACT + 16);
+    localparam H_S = (WIDTH == 12) ? (H_FP + 40) : (WIDTH == 14) ? (H_FP + 44) : (H_FP + 96);
+    localparam H_TOT = (WIDTH == 12) ? 1649 : (WIDTH == 14) ? 2199 : 799;
+    localparam V_ACT = (WIDTH == 12) ? 719 : (WIDTH == 14) ? 1079 : 479;
+    localparam V_FP = (WIDTH == 12) ? (V_ACT + 5) : (WIDTH == 14) ? (V_ACT + 4) : (V_ACT + 2);
+    localparam V_S = (WIDTH == 12) ? (V_FP + 5) : (WIDTH == 14) ? (V_FP + 5) : (V_FP + 2);
+    localparam V_TOT = (WIDTH == 12) ? 749 : (WIDTH == 14) ? 1124 : 524;
+    initial begin
+        $display(H_ACT);
+        $display(H_FP);
+        $display(H_S);
+        $display(H_TOT);
+        $display(V_ACT);
+        $display(V_FP);
+        $display(V_S);
+        $display(V_TOT);
     end
 
     always_comb begin

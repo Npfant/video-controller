@@ -9,6 +9,9 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
 !s11f vlog 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -18,60 +21,61 @@ R0
 cModel Technology
 Z1 dC:/Users/npfan/Desktop/School/Capstone/video-controller
 T_opt
-!s110 1739130855
-Vf0XcGXRNN:7k2hA0DifQI2
+!s110 1739207065
+V1Sg?bKZU?8dV[>]0@hz_V1
 04 8 4 work stimulus fast 0
-=1-782b46511800-67a907e7-266-1078
+=1-782b46511800-67aa3198-385-7130
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z2 tCvgOpt 0
 n@_opt
 OL;O;2021.3;73
-vstimulus
+R1
+vscrn_pos
 Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1739130854
+Z4 !s110 1739207148
 !i10b 1
-!s100 Y9<J@mOGZUbUjN0UW8EeR2
-Ijj==5GJaldQVJ79<Q]>273
+!s100 P_FlmaaGcb?U4iX:z^ZLC3
+Ib<YLNC5lFIUlEAQlL?0E01
 S1
 R1
-w1739130299
-8tmds_encoder_tb.sv
-Ftmds_encoder_tb.sv
+w1739207060
+8scrn_pos.sv
+Fscrn_pos.sv
 !i122 0
-L0 1 41
+L0 1 48
 Z5 VDg1SIo80bB@j0V0VzS_@n1
 Z6 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z7 !s108 1739130854.000000
-Z8 !s107 tmds_encoder_tb.sv|tmds_encoder.sv|
-Z9 !s90 -reportprogress|300|tmds_encoder.sv|tmds_encoder_tb.sv|
+Z7 !s108 1739207148.000000
+!s107 scrn_pos_tb.sv|scrn_pos.sv|
+Z8 !s90 -reportprogress|300|scrn_pos.sv|scrn_pos_tb.sv|
 !i113 0
-Z10 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
-vtmds_encoder
+vstimulus
 R3
 R4
 !i10b 1
-!s100 SaN39Yi0BbWP>m5f3kiU71
-IKDLX]Fl5mjn@9=i5@k`_G1
+!s100 CLOdAo4EO=DAl7^We8n1a2
+IAO`[o7`n^Z7^<OKCUgg=a0
 S1
 R1
-w1739130850
-8tmds_encoder.sv
-Ftmds_encoder.sv
+w1739207051
+8scrn_pos_tb.sv
+Fscrn_pos_tb.sv
 !i122 0
-L0 1 65
+L0 1 27
 R5
 R6
 r1
 !s85 0
 31
 R7
+Z10 !s107 scrn_pos_tb.sv|scrn_pos.sv|
 R8
-R9
 !i113 0
-R10
+R9
 R2
