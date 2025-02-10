@@ -21,37 +21,37 @@ R0
 cModel Technology
 Z1 dC:/Users/npfan/Desktop/School/Capstone/video-controller
 T_opt
-!s110 1739207065
-V1Sg?bKZU?8dV[>]0@hz_V1
+!s110 1739227618
+VkmAMjUIUIYZDoLfO>RU9z1
 04 8 4 work stimulus fast 0
-=1-782b46511800-67aa3198-385-7130
+=1-782b46511800-67aa81e1-36a-99e8
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z2 tCvgOpt 0
 n@_opt
 OL;O;2021.3;73
 R1
-vscrn_pos
+vserializer
 Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1739207148
+Z4 !s110 1739227671
 !i10b 1
-!s100 P_FlmaaGcb?U4iX:z^ZLC3
-Ib<YLNC5lFIUlEAQlL?0E01
+!s100 GM8flho`1DY`LPH_Qj1W53
+IHHHig?DQ^Lgl]a`l[nXii3
 S1
 R1
-w1739207060
-8scrn_pos.sv
-Fscrn_pos.sv
+w1739227612
+8serializer.sv
+Fserializer.sv
 !i122 0
-L0 1 48
+L0 1 41
 Z5 VDg1SIo80bB@j0V0VzS_@n1
 Z6 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z7 !s108 1739207148.000000
-!s107 scrn_pos_tb.sv|scrn_pos.sv|
-Z8 !s90 -reportprogress|300|scrn_pos.sv|scrn_pos_tb.sv|
+Z7 !s108 1739227671.000000
+!s107 serializer_tb.sv|serializer.sv|
+Z8 !s90 -reportprogress|300|serializer.sv|serializer_tb.sv|
 !i113 0
 Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
@@ -59,22 +59,22 @@ vstimulus
 R3
 R4
 !i10b 1
-!s100 CLOdAo4EO=DAl7^We8n1a2
-IAO`[o7`n^Z7^<OKCUgg=a0
+!s100 @IgE4bnYcQhjF6Y8oz7nc1
+ID03SC5o:1kQ_J=FUCGK=53
 S1
 R1
-w1739207051
-8scrn_pos_tb.sv
-Fscrn_pos_tb.sv
+w1739225560
+8serializer_tb.sv
+Fserializer_tb.sv
 !i122 0
-L0 1 27
+L0 1 38
 R5
 R6
 r1
 !s85 0
 31
 R7
-Z10 !s107 scrn_pos_tb.sv|scrn_pos.sv|
+Z10 !s107 serializer_tb.sv|serializer.sv|
 R8
 !i113 0
 R9
