@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog scrn_pos.sv scrn_pos_tb.sv
+vlog ../Src/scrn_pos.sv ../Test/scrn_pos_tb.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus 
