@@ -3,6 +3,10 @@ K4
 z2
 Z0 !s99 nomlopt
 R0
+R0
+R0
+R0
+R0
 !s11f vlog 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -12,10 +16,10 @@ R0
 cModel Technology
 Z1 dC:/Users/npfan/Desktop/School/Capstone/video-controller/Sim
 T_opt
-!s110 1739916013
-V8nNWjJMdkd^Vgdn=^g]VU0
+!s110 1739918960
+VmnMRhIb][doW6SEc_W@5K1
 04 8 4 work stimulus fast 0
-=1-782b46511800-67b502ec-338-6868
+=1-782b46511800-67b50e70-2d0-f90c
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z2 tCvgOpt 0
@@ -23,7 +27,7 @@ n@_opt
 OL;O;2021.3;73
 vdvi_generator
 Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1739916011
+Z4 !s110 1739918959
 !i10b 1
 !s100 CCgGUU[<Ni8gfgK;P7XN@0
 IlCERYA8i=Z4C9H27]NJ;E1
@@ -39,11 +43,35 @@ Z6 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z7 !s108 1739916011.000000
-Z8 !s107 ../Test/dvi_generator_tb.sv|../Src/serializer.sv|../Src/tmds_encoder.sv|../Src/dvi_generator.sv|
-Z9 !s90 -reportprogress|300|../Src/dvi_generator.sv|../Src/tmds_encoder.sv|../Src/serializer.sv|../Test/dvi_generator_tb.sv|
+Z7 !s108 1739918959.000000
+Z8 !s107 ../Test/top_tb.sv|../Src/serializer.sv|../Src/tmds_encoder.sv|../Src/dvi_generator.sv|../Src/vram.sv|../Src/scrn_pos.sv|../Src/vidya_controller.sv|
+Z9 !s90 -reportprogress|300|../Src/vidya_controller.sv|../Src/scrn_pos.sv|../Src/vram.sv|../Src/dvi_generator.sv|../Src/tmds_encoder.sv|../Src/serializer.sv|../Test/top_tb.sv|
 !i113 0
 Z10 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vscrn_pos
+R3
+R4
+!i10b 1
+!s100 lOHU_b4V^kL_n4[kllcR92
+I9ZFJ7IlN7J6ET8z5]W9?=3
+S1
+R1
+w1739917077
+8../Src/scrn_pos.sv
+F../Src/scrn_pos.sv
+!i122 0
+L0 1 38
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
 R2
 vserializer
 R3
@@ -73,15 +101,15 @@ vstimulus
 R3
 R4
 !i10b 1
-!s100 RBo0M;SgISZ44?lzL73A[0
-I2LF74<_o`lSOHYn@X8gY`0
+!s100 d@I5Ma_X?AHG9GA8R<GZ;2
+I=4EKchhALTNBL2DAcnSo@1
 S1
 R1
-w1739916005
-8../Test/dvi_generator_tb.sv
-F../Test/dvi_generator_tb.sv
+w1739918052
+8../Test/top_tb.sv
+F../Test/top_tb.sv
 !i122 0
-L0 1 39
+L0 1 37
 R5
 R6
 r1
@@ -106,6 +134,55 @@ w1739130850
 F../Src/tmds_encoder.sv
 !i122 0
 L0 1 65
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R2
+vvideoRam
+R3
+R4
+!i10b 1
+!s100 VfJJ]L6Pb[UUzY<Sb@nic1
+I^UeeIfo:Qm[9e@X?CPaNm2
+S1
+R1
+w1739918674
+8../Src/vram.sv
+F../Src/vram.sv
+!i122 0
+L0 1 23
+R5
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 0
+R10
+R2
+nvideo@ram
+vvidya
+R3
+R4
+!i10b 1
+!s100 ::1U1_ZmS5Go_JK92Z7YE1
+IVUDIg1m3D<0c8BPY0Zlfc3
+S1
+R1
+w1739918956
+8../Src/vidya_controller.sv
+F../Src/vidya_controller.sv
+!i122 0
+L0 1 68
 R5
 R6
 r1

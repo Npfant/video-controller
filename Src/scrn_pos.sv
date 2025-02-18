@@ -18,8 +18,8 @@ module scrn_pos #(parameter WIDTH = 10)(
     localparam V_TOT = (WIDTH == 12) ? 749 : (WIDTH == 14) ? 1124 : 524;
 
     always_comb begin
-        hsync = (H_FP <= sx && sx < H_S);
-        vsync = (V_FP <= sy && sy < V_S);
+        hsync = ~(sx >= H_FP && sx < H_S);
+        vsync = ~(sy >= V_FP && sy < V_S);
         de = (sx <= H_ACT && sy <= V_ACT);
     end
 
