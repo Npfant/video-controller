@@ -16,16 +16,6 @@ module scrn_pos #(parameter WIDTH = 10)(
     localparam V_FP = (WIDTH == 12) ? (V_ACT + 5) : (WIDTH == 14) ? (V_ACT + 4) : (V_ACT + 2);
     localparam V_S = (WIDTH == 12) ? (V_FP + 5) : (WIDTH == 14) ? (V_FP + 5) : (V_FP + 2);
     localparam V_TOT = (WIDTH == 12) ? 749 : (WIDTH == 14) ? 1124 : 524;
-    initial begin
-        $display(H_ACT);
-        $display(H_FP);
-        $display(H_S);
-        $display(H_TOT);
-        $display(V_ACT);
-        $display(V_FP);
-        $display(V_S);
-        $display(V_TOT);
-    end
 
     always_comb begin
         hsync = (H_FP <= sx && sx < H_S);

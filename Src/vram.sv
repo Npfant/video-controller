@@ -1,20 +1,22 @@
-module videoRam #(parameter DATAW = 24, totalWidth = 20, totalPixel = 307200)(
+module videoRam #(parameter DATAW = 24, addrLength = 20, totalPixel = 307200)(
     input logic writeClk, readClk, writeEn, readEn,
-    input logic [totalWidth-1:0] writePointer, readPointer,
+    input logic [addrLength-1:0] writePointer, readPointer,
     input logic [DATAW-1:0] dataIn,
     output logic [DATAW-1:0] dataOut
 );
-    logic [DATAW-1:0] buffMem [0:(totalPixel-1)];
+    logic [31:0] buffMem [0:(totalPixel-1)];
+    //logic [31:0] lol;
 
     always_ff @(posedge writeClk) begin
         if(writeEn) begin
-            buffMem[writePointer] <= dataIn;
+            buffMem[writePointer] <= {8'b00000000, dataIn};
+            //lol <= {8'b00000000, dataIn};
         end
     end
 
-    always_ff @(negedge readClk) begin
+    always_ff @(posedge readClk) begin
         if(readEn) begin
-            dataOut <= buffMem[readPointer];
+            dataOut <= buffMem[readPointer][23:0];
         end
     end
     

@@ -1,12 +1,13 @@
 module stimulus();
 
-logic clk, rst, writeEn, readEn;
+logic clk, clk_10x, rst, writeEn, readEn, ch0, ch1, ch2, chc;
 logic [19:0] writePointer, readPointer;
 logic [23:0] dataIn, dataOut;
 logic [24:0] cycle;
 
 initial begin
     clk = 1;
+    clk_10x = 1;
     writeEn = 1;
     readEn = 1;
     rst = 1;
@@ -14,8 +15,8 @@ initial begin
     rst = 0;
 end
 
-videoRam test(
-    clk, clk, writeEn, readEn, writePointer, readPointer, dataIn, dataOut
+vidya test(
+    clk, clk_10x, rst, dataIn, ch0, ch1, ch2, chc
 );
 
 always @ (posedge clk) begin
@@ -33,8 +34,11 @@ always @ (posedge clk) begin
 end
 
 always begin
-    #1 clk = ~clk;
+    #1 clk_10x = ~clk_10x;
 end
 
+always begin
+    #10 clk = ~clk;
+end
 
 endmodule

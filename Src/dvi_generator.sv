@@ -5,7 +5,7 @@ module dvi_generator(
     input logic de,
     input logic [7:0] blu,
     input logic [1:0] ctrl0,
-    input logic [7:0] grn;
+    input logic [7:0] grn,
     input logic [1:0] ctrl1,
     input logic [7:0] red,
     input logic [1:0] ctrl2,
@@ -13,7 +13,7 @@ module dvi_generator(
     output logic ch1,
     output logic ch2,
     output logic chc
-)
+);
 
 logic [9:0] tmds_ch0;
 logic [9:0] tmds_ch1;

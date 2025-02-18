@@ -11,24 +11,54 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do vram.do
+# do dvi_generator.do
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 13:41:53 on Feb 12,2025
-# vlog -reportprogress 300 ../Src/vram.sv ../Test/vram_tb.sv 
-# -- Compiling module videoRam
+# Start time: 15:55:31 on Feb 18,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
+# -- Compiling module dvi_generator
+# -- Compiling module tmds_encoder
+# -- Compiling module serializer
 # -- Compiling module stimulus
 # 
 # Top level modules:
 # 	stimulus
-# End time: 13:41:53 on Feb 12,2025, Elapsed time: 0:00:00
+# End time: 15:55:31 on Feb 18,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 13:41:53 on Feb 12,2025
+# Start time: 15:55:31 on Feb 18,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.stimulus(fast)
-# Loading work.videoRam(fast)
+# Loading work.dvi_generator(fast)
+# Loading work.tmds_encoder(fast)
+# Loading work.serializer(fast)
 # .main_pane.list.interior.cs.body
 # .main_pane.wave.interior.cs.body.pw.wf
-# End time: 13:42:31 on Feb 12,2025, Elapsed time: 0:00:38
+do dvi_generator.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is npfan@N-1-1-7.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 16:00:11 on Feb 18,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
+# -- Compiling module dvi_generator
+# -- Compiling module tmds_encoder
+# -- Compiling module serializer
+# -- Compiling module stimulus
+# 
+# Top level modules:
+# 	stimulus
+# End time: 16:00:11 on Feb 18,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# End time: 16:00:12 on Feb 18,2025, Elapsed time: 0:04:41
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.stimulus 
+# Start time: 16:00:12 on Feb 18,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.stimulus(fast)
+# Loading work.dvi_generator(fast)
+# Loading work.tmds_encoder(fast)
+# Loading work.serializer(fast)
+# .main_pane.list.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
