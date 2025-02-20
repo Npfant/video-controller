@@ -1,12 +1,7 @@
 m255
 K4
 z2
-Z0 !s99 nomlopt
-R0
-R0
-R0
-R0
-R0
+!s99 nomlopt
 !s11f vlog 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -14,183 +9,183 @@ R0
 !i10e 25
 !i10f 100
 cModel Technology
-Z1 dC:/Users/npfan/Desktop/School/Capstone/video-controller/Sim
+Z0 dC:/Users/npfan/Desktop/School/Capstone/video-controller/Sim
 T_opt
-!s110 1739918960
-VmnMRhIb][doW6SEc_W@5K1
+!s110 1740076516
+VP=lNj>IomcB]nbeo`RkMh1
 04 8 4 work stimulus fast 0
-=1-782b46511800-67b50e70-2d0-f90c
+=1-782b46511800-67b775e3-2c4-b208
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+Z1 tCvgOpt 0
 n@_opt
 OL;O;2021.3;73
 vdvi_generator
-Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z4 !s110 1739918959
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z3 !s110 1740076515
 !i10b 1
 !s100 CCgGUU[<Ni8gfgK;P7XN@0
 IlCERYA8i=Z4C9H27]NJ;E1
 S1
-R1
+R0
 w1739835948
 8../Src/dvi_generator.sv
 F../Src/dvi_generator.sv
 !i122 0
 L0 1 31
-Z5 VDg1SIo80bB@j0V0VzS_@n1
-Z6 OL;L;2021.3;73
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z7 !s108 1739918959.000000
-Z8 !s107 ../Test/top_tb.sv|../Src/serializer.sv|../Src/tmds_encoder.sv|../Src/dvi_generator.sv|../Src/vram.sv|../Src/scrn_pos.sv|../Src/vidya_controller.sv|
-Z9 !s90 -reportprogress|300|../Src/vidya_controller.sv|../Src/scrn_pos.sv|../Src/vram.sv|../Src/dvi_generator.sv|../Src/tmds_encoder.sv|../Src/serializer.sv|../Test/top_tb.sv|
+Z6 !s108 1740076514.000000
+Z7 !s107 ../Test/top_tb.sv|../Src/serializer.sv|../Src/tmds_encoder.sv|../Src/dvi_generator.sv|../Src/vram.sv|../Src/scrn_pos.sv|../Src/vidya_controller.sv|
+Z8 !s90 -reportprogress|300|../Src/vidya_controller.sv|../Src/scrn_pos.sv|../Src/vram.sv|../Src/dvi_generator.sv|../Src/tmds_encoder.sv|../Src/serializer.sv|../Test/top_tb.sv|
 !i113 0
-Z10 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
 vscrn_pos
+R2
 R3
-R4
 !i10b 1
 !s100 lOHU_b4V^kL_n4[kllcR92
 I9ZFJ7IlN7J6ET8z5]W9?=3
 S1
-R1
+R0
 w1739917077
 8../Src/scrn_pos.sv
 F../Src/scrn_pos.sv
 !i122 0
 L0 1 38
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
-vserializer
-R3
-R4
-!i10b 1
-!s100 GM8flho`1DY`LPH_Qj1W53
-IkR3n7EfRJeYf:0bkcYT^f3
-S1
+R9
 R1
-w1739227612
+vserializer
+R2
+R3
+!i10b 1
+!s100 `==k;iieT^gAZlh^?>fz>0
+ID96gWM7R_8?^gWR>8E=2]1
+S1
+R0
+w1740075992
 8../Src/serializer.sv
 F../Src/serializer.sv
 !i122 0
 L0 1 41
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
+R9
+R1
 vstimulus
+R2
 R3
-R4
 !i10b 1
 !s100 d@I5Ma_X?AHG9GA8R<GZ;2
 I=4EKchhALTNBL2DAcnSo@1
 S1
-R1
+R0
 w1739918052
 8../Test/top_tb.sv
 F../Test/top_tb.sv
 !i122 0
 L0 1 37
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
-vtmds_encoder
-R3
-R4
-!i10b 1
-!s100 SaN39Yi0BbWP>m5f3kiU71
-IUDf=@WGGE7iFFlHBzXiEI1
-S1
+R9
 R1
-w1739130850
+vtmds_encoder
+R2
+R3
+!i10b 1
+!s100 o2cC1YRNGa[ckL8QRV@zi3
+I3mfJ::9aF>Jg]`i5Ghl5b0
+S1
+R0
+w1740073828
 8../Src/tmds_encoder.sv
 F../Src/tmds_encoder.sv
 !i122 0
-L0 1 65
+L0 1 66
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
+R9
+R1
 vvideoRam
+R2
 R3
-R4
 !i10b 1
 !s100 VfJJ]L6Pb[UUzY<Sb@nic1
 I^UeeIfo:Qm[9e@X?CPaNm2
 S1
-R1
+R0
 w1739918674
 8../Src/vram.sv
 F../Src/vram.sv
 !i122 0
 L0 1 23
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
+R9
+R1
 nvideo@ram
 vvidya
+R2
 R3
-R4
 !i10b 1
-!s100 ::1U1_ZmS5Go_JK92Z7YE1
-IVUDIg1m3D<0c8BPY0Zlfc3
+!s100 _4k>hUee;4e8ml7<dc]>O0
+IJj29oaj=El<2zk518`gUf3
 S1
-R1
-w1739918956
+R0
+w1739919129
 8../Src/vidya_controller.sv
 F../Src/vidya_controller.sv
 !i122 0
 L0 1 68
+R4
 R5
-R6
 r1
 !s85 0
 31
+R6
 R7
 R8
-R9
 !i113 0
-R10
-R2
+R9
+R1

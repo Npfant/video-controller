@@ -11,7 +11,7 @@ module serializer(
 
     always_ff @(posedge x_clk) begin
         if (rst) begin
-            i <= 0;
+            i <= -1;
         end
         else begin
             case(i)

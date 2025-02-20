@@ -1,6 +1,6 @@
 module stimulus();
 
-logic clk, clk_10x, rst, writeEn, readEn, ch0, ch1, ch2, chc;
+logic clk, clk_10x, rst, de, writeEn, readEn, ch0, ch1, ch2, chc;
 logic [23:0] dataIn;
 logic [24:0] cycle;
 
@@ -10,12 +10,15 @@ initial begin
     writeEn = 1;
     readEn = 1;
     rst = 1;
-    #2
+    de = 0;
+    #20
     rst = 0;
+    #20
+    de = 1;
 end
 
 dvi_generator test(
-    clk, clk_10x, rst, ~rst, dataIn[7:0], 2'b11, dataIn[15:8], 2'b00, dataIn[23:16], 2'b00, ch0, ch1, ch2, chc
+    clk, clk_10x, rst, de, dataIn[7:0], 2'b11, dataIn[15:8], 2'b00, dataIn[23:16], 2'b00, ch0, ch1, ch2, chc
 );
 
 always @ (posedge clk) begin
