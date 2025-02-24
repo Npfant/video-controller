@@ -1,24 +1,26 @@
-module clk_div #(parameter WIDTH = 3)(
+module clk_div #(parameter RES = 00)(
     input logic clk,
     input logic rst,
+    input logic [1:0] res,
     output logic clk_pix,
     output logic clk_pix_10x,
     output logic clk_pix_locked
 );
 
-    parameter MULTI_MASTER = 12.5875;
-    
-    /*if(WIDTH == 3) begin
-        MULTI_MASTER = 74.25;
-    end else if (WIDTH == 2) begin
-        MULTI_MASTER = 37.125;
-    end else begin
-        MULTI_MASTER = 12.5875;
-    end*/
+    localparam MULTI_MASTER_640 = 12.5875;
+    localparam MULTI_MASTER_1280 = 37.125;
     localparam DIV_MASTER = 5;
     localparam DIV_10x = 2.0;
     localparam DIV_1X = 10;
     localparam IN_PERIOD = 10.0;
+
+    /*if(WIDTH == 3) begin
+        MULTI_MASTER = 74.25; //1920x1080
+    end else if (WIDTH == 2) begin
+        MULTI_MASTER = 37.125; //1280x720
+    end else begin
+        MULTI_MASTER = 12.5875; //640x480
+    end*/
 
     logic feedback;
     logic clk_pix_unbuf;
@@ -26,7 +28,7 @@ module clk_div #(parameter WIDTH = 3)(
     logic locked;
 
     MMCME2_BASE #(
-        .CLKBOUT_MULT_F(MULTI_MASTER),
+        .CLKBOUT_MULT_F(if(res == 2'b01) ? 37.125 : 12.5875),
         .CLKIN1_PERIOD(IN_PERIOD),
         .CLKOUT0_DIVIDE_F(DIV_10x),
         .CLKOUT1_DIVIDE_F(DIV_1X),

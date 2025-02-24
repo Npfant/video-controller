@@ -11,10 +11,10 @@ z2
 cModel Technology
 Z0 dC:/Users/npfan/Desktop/School/Capstone/video-controller/Sim
 T_opt
-!s110 1740076516
-VP=lNj>IomcB]nbeo`RkMh1
+!s110 1740352405
+V8PnW8E[FR0zCD^ESMmi@01
 04 8 4 work stimulus fast 0
-=1-782b46511800-67b775e3-2c4-b208
+=1-782b46511800-67bbab95-fd-137c0
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
 Z1 tCvgOpt 0
@@ -22,7 +22,7 @@ n@_opt
 OL;O;2021.3;73
 vdvi_generator
 Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z3 !s110 1740076515
+Z3 !s110 1740352404
 !i10b 1
 !s100 CCgGUU[<Ni8gfgK;P7XN@0
 IlCERYA8i=Z4C9H27]NJ;E1
@@ -38,7 +38,7 @@ Z5 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z6 !s108 1740076514.000000
+Z6 !s108 1740352404.000000
 Z7 !s107 ../Test/top_tb.sv|../Src/serializer.sv|../Src/tmds_encoder.sv|../Src/dvi_generator.sv|../Src/vram.sv|../Src/scrn_pos.sv|../Src/vidya_controller.sv|
 Z8 !s90 -reportprogress|300|../Src/vidya_controller.sv|../Src/scrn_pos.sv|../Src/vram.sv|../Src/dvi_generator.sv|../Src/tmds_encoder.sv|../Src/serializer.sv|../Test/top_tb.sv|
 !i113 0

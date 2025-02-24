@@ -11,9 +11,9 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do top.do
+# do {.\top.do}
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 12:35:14 on Feb 20,2025
+# Start time: 17:13:24 on Feb 23,2025
 # vlog -reportprogress 300 ../Src/vidya_controller.sv ../Src/scrn_pos.sv ../Src/vram.sv ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/top_tb.sv 
 # -- Compiling module vidya
 # -- Compiling module scrn_pos
@@ -25,10 +25,10 @@
 # 
 # Top level modules:
 # 	stimulus
-# End time: 12:35:15 on Feb 20,2025, Elapsed time: 0:00:01
+# End time: 17:13:24 on Feb 23,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 12:35:15 on Feb 20,2025
+# Start time: 17:13:24 on Feb 23,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.stimulus(fast)
@@ -40,5 +40,5 @@
 # Loading work.serializer(fast)
 # .main_pane.list.interior.cs.body
 # .main_pane.wave.interior.cs.body.pw.wf
-# End time: 12:42:24 on Feb 20,2025, Elapsed time: 0:07:09
+# End time: 18:18:40 on Feb 23,2025, Elapsed time: 1:05:16
 # Errors: 0, Warnings: 0

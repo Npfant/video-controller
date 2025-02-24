@@ -1,6 +1,7 @@
 module top(
     input logic clk,
-    input rst,
+    input logic rst,
+    input logic [1:0]  res,
     input logic [23:0] dataIn,
     output logic ch0,
     output logic ch1,
@@ -8,32 +9,43 @@ module top(
     output logic chc
 );
 
-localparam length = 10;
-localparam WIDTH = 640;
-localparam HEIGHT = 480;
-localparam totPix = WIDTH * HEIGHT;
-localparam addrLength = $clog2(totPix);
+//localparam 640_length = 10;
+//localparam 640_WIDTH = 640;
+//localparam 640_HEIGHT = 480;
+//localparam 640_totPix = 640_WIDTH * 640_HEIGHT;
+//localparam 640_addrLength = $clog2(640_totPix);
+
+//localparam 1280_length = 12;
+localparam 1280_WIDTH = 1280;
+localparam 1280_HEIGHT = 720;
+localparam 1280_totPix = 1280_WIDTH * 1280_HEIGHT;
+localparam 1280_addrLength = $clog2(1280_totPix);
 
 logic clk_pix, clk_10x, clk_pix_locked;
-logic [length - 1 : 0] sx, sy;
+logic [11 : 0] sx, sy;
 logic hsync, vsync;
 logic de, we;
 logic [23:0] buffIn;
 logic [addrLength-1:0] writeAddr, readAddr;
 
 //Clock generator 
-clk_div clk_gen(clk, rst, clk_pix, clk_10x, clk_pix_locked);
+clk_div clk_gen(clk, rst, res, clk_pix, clk_10x, clk_pix_locked);
 
 //Generate screen position signals
-scrn_pos pos(clk_pix, rst, sx, sy, hsync, vsync, de);
+scrn_pos pos(clk_pix, rst, res, sx, sy, hsync, vsync, de);
 
 always_ff @(posedge clk_pix) begin
-    //Check to see if in the active region
-    if(sx > 47) begin
-        if(sx < 680) begin
-            if(sy > 32) begin
-                if(sy < 513) begin
-                    we <= 1;
+    //Check resolution to determine bounds
+    if(res == 2'b01) begin
+        //Check to see if in the active region
+        if(sx > 219) begin
+            if(sx < 1500) begin
+                if(sy > 19) begin
+                    if(sy < 740) begin
+                        we <= 1;
+                    end else begin
+                        we <= 0;
+                    end
                 end else begin
                     we <= 0;
                 end
@@ -43,15 +55,38 @@ always_ff @(posedge clk_pix) begin
         end else begin
             we <= 0;
         end
+        //Calculate write address within the frame buffer
+        writeAddr <= WIDTH * sy + sx;
+        if(sx == 0 && sy == 0) begin
+            readAddr <= 0;
+        end else if (we) begin
+            readAddr <= readAddr + 1;
+        end
     end else begin
-        we <= 0;
-    end
-    //Calculate write address within the frame buffer
-    writeAddr <= WIDTH * sy + sx;
-    if(sx == 0 && sy == 0) begin
-        readAddr <= 0;
-    end else if (we) begin
-        readAddr <= readAddr + 1;
+        if(sx > 47) begin
+            if(sx < 688) begin
+                if(sy > 32) begin
+                    if(sy < 513) begin
+                        we <= 1;
+                    end else begin
+                        we <= 0;
+                    end
+                end else begin
+                    we <= 0;
+                end
+            end else begin
+                we <= 0;
+            end
+        end else begin
+            we <= 0;
+        end
+        //Calculate write address within the frame buffer
+        writeAddr <= WIDTH * sy + sx;
+        if(sx == 0 && sy == 0) begin
+            readAddr <= 0;
+        end else if (we) begin
+            readAddr <= readAddr + 1;
+        end
     end
 end
 
