@@ -43,7 +43,7 @@ module video_controller_apb import cvw::*; #(parameter cvw_t P) (
   localparam RES_SWITCH = 8'h00;
   localparam FRAME_IN   = 8'h04;
   logic [1:0] res_switch;
-  logic [7:0] frame;
+  logic [23:0] frame;
   logic [7:0] ENTRY;
 
   assign memwrite = PWRITE & PENABLE & PSEL;  // only write in access phase
@@ -54,12 +54,12 @@ module video_controller_apb import cvw::*; #(parameter cvw_t P) (
   always_ff @(posedge PCLK) begin
     if(~PRESETn) begin
       res_switch <= 2'b0; //Defaults to 640x480
-      frame <= 8'b0;
+      frame <= 24'b0;
     end else begin
       if(memwrite) begin
         case(ENTRY)
           RES_SWITCH: res_switch <= PWDATA[1:0];
-          FRAME_IN: frame <= PWDATA[7:0];
+          FRAME_IN: frame <= PWDATA[23:0];
         endcase
       end
     end
