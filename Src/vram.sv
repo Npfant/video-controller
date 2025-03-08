@@ -1,4 +1,4 @@
-module videoRam #(parameter DATAW = 24, addrLength = 20, totalPixel = 307200)(
+module vram #(parameter DATAW = 24, addrLength = 20, totalPixel = 307200)(
     input logic writeClk, readClk, writeEn, readEn,
     input logic [addrLength-1:0] writePointer, readPointer,
     input logic [DATAW-1:0] dataIn,

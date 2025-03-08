@@ -1,4 +1,4 @@
-module clk_div #(parameter RES = 00)(
+module clk_div (
     input logic clk,
     input logic rst,
     input logic [1:0] res,

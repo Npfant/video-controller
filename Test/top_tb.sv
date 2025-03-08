@@ -1,6 +1,7 @@
 module stimulus();
 
 logic clk, clk_10x, rst, ch0, ch1, ch2, chc;
+logic [1:0] res;
 logic [23:0] dataIn;
 logic [24:0] cycle;
 
@@ -8,12 +9,13 @@ initial begin
     clk = 1;
     clk_10x = 1;
     rst = 1;
+    res = 0;
     #2
     rst = 0;
 end
 
 vidya test(
-    clk, clk_10x, rst, dataIn, ch0, ch1, ch2, chc
+    clk, clk_10x, rst, res, dataIn, ch0, ch1, ch2, chc
 );
 
 always @ (posedge clk) begin

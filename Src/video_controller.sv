@@ -27,9 +27,18 @@ logic hsync, vsync;
 logic de, we;
 logic [23:0] buffIn;
 logic [addrLength-1:0] writeAddr, readAddr;
+logic [18:0] master;
 
-//Clock generator 
-clk_div clk_gen(clk, rst, res, clk_pix, clk_10x, clk_pix_locked);
+always_ff @(posedge clk) begin
+    if(res == 1) begin
+        master = 371250;
+    end else begin
+        master = 125875;
+    end
+end
+
+//Clock generator
+clk_div clk_gen(clk, rst,  master, clk_pix, clk_10x, clk_pix_locked);
 
 //Generate screen position signals
 scrn_pos pos(clk_pix, rst, res, sx, sy, hsync, vsync, de);

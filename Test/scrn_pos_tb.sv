@@ -2,8 +2,9 @@ module stimulus();
 
 logic clk;
 logic rst;
-logic [9:0] sx;
-logic [9:0] sy;
+logic [1:0] res;
+logic [11:0] sx;
+logic [11:0] sy;
 logic hsync;
 logic vsync;
 logic de;
@@ -11,6 +12,7 @@ logic de;
 initial begin
     clk = 1;
     rst = 1;
+    res = 0;
 
     #2
     rst = 0;
@@ -18,7 +20,7 @@ initial begin
 end
 
 scrn_pos test(
-    clk, rst, sx, sy, hsync, vsync, de
+    clk, rst, res, sx, sy, hsync, vsync, de
 );
 
 always
