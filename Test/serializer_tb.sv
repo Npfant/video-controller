@@ -33,6 +33,6 @@ always begin
     #1 x_clk = ~x_clk;
 end
 always begin
-    #10 clk = ~clk;
+    #5 clk = ~clk;
 end
 endmodule

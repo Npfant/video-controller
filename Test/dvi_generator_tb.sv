@@ -11,9 +11,9 @@ initial begin
     readEn = 1;
     rst = 1;
     de = 0;
-    #20
+    #10
     rst = 0;
-    #20
+    #10
     de = 1;
 end
 
@@ -36,7 +36,7 @@ always begin
 end
 
 always begin
-    #10 clk = ~clk;
+    #5 clk = ~clk;
 end
 
 endmodule

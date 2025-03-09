@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog ../Src/serializer.sv ../Sim/serializer_tb.sv
+vlog ../Src/serializer.sv ../Test/serializer_tb.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus 

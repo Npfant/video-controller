@@ -11,16 +11,13 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do top.do
+# do dvi_generator.do
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is unknown.
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 20:20:28 on Mar 07,2025
-# vlog -reportprogress 300 ../Src/vidya_controller.sv ../Src/scrn_pos.sv ../Src/vram.sv ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/top_tb.sv 
-# -- Compiling module vidya
-# -- Compiling module scrn_pos
-# -- Compiling module vram
+# Start time: 18:30:24 on Mar 08,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
 # -- Compiling module dvi_generator
 # -- Compiling module tmds_encoder
 # -- Compiling module serializer
@@ -28,16 +25,13 @@
 # 
 # Top level modules:
 # 	stimulus
-# End time: 20:20:28 on Mar 07,2025, Elapsed time: 0:00:00
+# End time: 18:30:24 on Mar 08,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.stimulus 
-# Start time: 20:20:28 on Mar 07,2025
+# Start time: 18:30:24 on Mar 08,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.stimulus(fast)
-# Loading work.vidya(fast)
-# Loading work.scrn_pos(fast)
-# Loading work.vram(fast)
 # Loading work.dvi_generator(fast)
 # Loading work.tmds_encoder(fast)
 # Loading work.serializer(fast)
@@ -45,8 +39,85 @@
 # .main_pane.wave.interior.cs.body.pw.wf
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: npfan  Hostname: N-1-1-7  ProcessID: 104588
-#           Attempting to use alternate WLF file "./wlfttamad7".
+#           Attempting to use alternate WLF file "./wlftjfqiat".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlfttamad7
-# End time: 20:22:02 on Mar 07,2025, Elapsed time: 0:01:34
+#           Using alternate file: ./wlftjfqiat
+do dvi_generator.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is unknown.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is npfan@N-1-1-7.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 18:39:36 on Mar 08,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
+# -- Compiling module dvi_generator
+# -- Compiling module tmds_encoder
+# ** Error: ../Src/tmds_encoder.sv(51): (vlog-2730) Undefined variable: 'stage_1'.
+# ** Error: ../Src/tmds_encoder.sv(54): (vlog-2730) Undefined variable: 'stage_1'.
+# ** Error: ../Src/tmds_encoder.sv(58): (vlog-2730) Undefined variable: 'stage_1'.
+# ** Error: ../Src/tmds_encoder.sv(61): (vlog-2730) Undefined variable: 'stage_1'.
+# -- Compiling module serializer
+# -- Compiling module stimulus
+# End time: 18:39:37 on Mar 08,2025, Elapsed time: 0:00:01
+# Errors: 4, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ./dvi_generator.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv"
+do dvi_generator.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is unknown.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is npfan@N-1-1-7.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 18:42:55 on Mar 08,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
+# -- Compiling module dvi_generator
+# -- Compiling module tmds_encoder
+# ** Error: ../Src/tmds_encoder.sv(61): (vlog-2730) Undefined variable: 'stage_1'.
+# -- Compiling module serializer
+# -- Compiling module stimulus
+# End time: 18:42:55 on Mar 08,2025, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ./dvi_generator.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv"
+do dvi_generator.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is unknown.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is npfan@N-1-1-7.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 18:43:24 on Mar 08,2025
+# vlog -reportprogress 300 ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv 
+# -- Compiling module dvi_generator
+# -- Compiling module tmds_encoder
+# -- Compiling module serializer
+# -- Compiling module stimulus
+# 
+# Top level modules:
+# 	stimulus
+# End time: 18:43:24 on Mar 08,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 18:43:25 on Mar 08,2025, Elapsed time: 0:13:01
+# Errors: 2, Warnings: 2
+# vsim -voptargs="+acc" work.stimulus 
+# Start time: 18:43:25 on Mar 08,2025
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading sv_std.std
+# Loading work.stimulus(fast)
+# Loading work.dvi_generator(fast)
+# Loading work.tmds_encoder(fast)
+# Loading work.serializer(fast)
+# .main_pane.list.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: npfan  Hostname: N-1-1-7  ProcessID: 104588
+#           Attempting to use alternate WLF file "./wlfth6xd1f".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfth6xd1f
+# End time: 18:44:46 on Mar 08,2025, Elapsed time: 0:01:21
 # Errors: 0, Warnings: 2
