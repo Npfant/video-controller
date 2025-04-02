@@ -1,26 +1,36 @@
 module vidya(
-    input logic clk_pix,
-    input logic clk_10x,
-    input rst,
+    input logic clk,
+    input logic clk_640,
+    input logic clk_1280,
+    input logic rst,
     input logic [1:0]  res,
     input logic [23:0] dataIn,
-    output logic ch0,
-    output logic ch1,
-    output logic ch2,
-    output logic chc
-);
-
+    output logic ch0_p,
+    output logic ch0_n,
+    output logic ch1_p,
+    output logic ch1_n,
+    output logic ch2_p,
+    output logic ch2_n,
+    output logic chc_p,
+    output logic chc_n
+	);
+  
 localparam WIDTH = 1280;
 localparam HEIGHT = 720;
 localparam totPix = WIDTH * HEIGHT;
 localparam addrLength = $clog2(totPix);
 
-logic [11 : 0] sx, sy;
+logic clk_pix, clk_5x;
+logic [19:0] sx, sy;
 logic hsync, vsync, hsync_buf1, vsync_buf1, hsync_buf2, vsync_buf2;
-logic de, de_buf1, de_buf2;
+logic de, we, de_buf1, de_buf2;
 logic [23:0] buffIn;
-logic [addrLength-1:0] writeAddr, readAddr;
+logic [addrLength - 1:0] writeAddr, readAddr;
 
+assign clk_5x = (res == 1) ? clk_1280 : clk_640;
+
+//Clock generator
+clk_div clk_gen(clk_5x, rst, clk_pix);
 
 //Generate screen position signals
 scrn_pos pos(clk_pix, rst, res, sx, sy, hsync, vsync, de);
@@ -42,10 +52,12 @@ always_ff @(posedge clk_pix) begin
     vsync_buf2 <= vsync_buf1;
 end
 
+localparam data = 24'h00B4FF;
+
 //Framebuffer
-vram framebuffer(clk_pix, clk_pix, de, de, writeAddr, readAddr, dataIn, buffIn);
+//vram framebuffer(clk_pix, clk_pix, de, de, writeAddr, readAddr, data, buffIn);
 
 //DVI encoder and generator
-dvi_generator gen(clk_pix, clk_10x, rst, de_buf2, buffIn[7:0], {hsync_buf2, vsync_buf2}, buffIn[15:8], 2'b00, buffIn[23:16], 2'b00, ch0, ch1, ch2, chc);
+dvi_generator gen(clk_pix, clk_5x, rst, de, data[7:0], {hsync, vsync}, data[15:8], 2'b00, data[23:16], 2'b00, ch0_p, ch0_n, ch1_p, ch1_n, ch2_p, ch2_n, chc_p, chc_n);
 
 endmodule

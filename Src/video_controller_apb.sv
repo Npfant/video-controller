@@ -25,7 +25,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 module video_controller_apb import cvw::*; #(parameter cvw_t P) (
-  input  logic                PCLK, PRESETn,
+  input  logic                PCLK,
+  input  logic                clk_640, clk_1280,
+  input  logic                PRESETn,
   input  logic                PSEL,
   input  logic [7:0]          PADDR,
   input  logic [P.XLEN-1:0]   PWDATA,
@@ -40,16 +42,20 @@ module video_controller_apb import cvw::*; #(parameter cvw_t P) (
   output logic                chc
 );
 
+  //Register map
   localparam RES_SWITCH = 8'h00;
-  localparam FRAME_IN   = 8'h04;
+
+  //Registers
   logic [1:0] res_switch;
   logic [23:0] frame;
   logic [7:0] ENTRY;
+  logic      memwrite;
+   
 
   assign memwrite = PWRITE & PENABLE & PSEL;  // only write in access phase
-  assign PREADY   = 
-  assign PRDATA   = 0;
-  assign ENTRY = {PADDR[7:5], 2'b00};
+  assign PREADY   = 1'b1; //CLINT shouldn't take more than one cycle?
+  assign PRDATA   = 0; //Video controller is an output only device, so read data is tied to zero.
+  assign ENTRY = {PADDR[7:2], 2'b00}; //What register is being accessed
 
   always_ff @(posedge PCLK) begin
     if(~PRESETn) begin
@@ -59,12 +65,13 @@ module video_controller_apb import cvw::*; #(parameter cvw_t P) (
       if(memwrite) begin
         case(ENTRY)
           RES_SWITCH: res_switch <= PWDATA[1:0];
-          FRAME_IN: frame <= PWDATA[23:0];
+          default: frame <= PWDATA[23:0];
         endcase
       end
     end
   end
 
-  video_controller controller (PCLK, PRESETn, res_switch, frame, ch0, ch1, ch2, chc);
+  //Controller call
+  video_controller controller (PCLK, clk_640, clk_1280, PRESETn, res_switch, frame, ch0, ch1, ch2, chc);
   
 endmodule
