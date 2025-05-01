@@ -31,7 +31,7 @@ always @ (posedge clk) begin
     end
     else begin
         cycle <= cycle + 1;
-        data <= cycle[7:0];
+        data <= 8'h00;
     end
 end
 

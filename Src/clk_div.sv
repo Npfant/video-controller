@@ -10,11 +10,11 @@ module clk_div (
         if (rst) begin
 	        clk_count <= 3'b0;
             clk_pix <= 1;
-        end else if (clk_count == 4) begin
+        end else if (clk_count == 3'b100) begin
 	        clk_pix <= ~clk_pix;
             clk_count <= 3'b0;
         end else begin
-            clk_count <= clk_count + 1;
+            clk_count <= clk_count + 3'b001;
         end
     end
 

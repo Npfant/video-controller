@@ -1,108 +1,106 @@
-module top(
+module video_controller(
     input logic clk,
     input logic rst,
-    input logic [1:0]  res,
     input logic [23:0] dataIn,
-    output logic ch0,
-    output logic ch1,
-    output logic ch2,
-    output logic chc
+    output logic ch0_p,
+    output logic ch0_n,
+    output logic ch1_p,
+    output logic ch1_n,
+    output logic ch2_p,
+    output logic ch2_n,
+    output logic chc_p,
+    output logic chc_n
 );
 
-//localparam 640_length = 10;
-//localparam 640_WIDTH = 640;
-//localparam 640_HEIGHT = 480;
-//localparam 640_totPix = 640_WIDTH * 640_HEIGHT;
-//localparam 640_addrLength = $clog2(640_totPix);
+logic clk_pix;
+logic clk_5x;
+logic locked;
+logic hsync, vsync, de;
+logic [9:0] SX, SY;
 
-//localparam 1280_length = 12;
-localparam 1280_WIDTH = 1280;
-localparam 1280_HEIGHT = 720;
-localparam 1280_totPix = 1280_WIDTH * 1280_HEIGHT;
-localparam 1280_addrLength = $clog2(1280_totPix);
+localparam WIDTH = 640;
+localparam HEIGHT = 480;
+logic[11:0] START_COLR = 12'h126;  // bar start colour (blue: 12'h126) (gold: 12'h640)
+localparam COLR_NUM   = 10;       // colours steps in each bar (don't overflow)
+localparam LINE_NUM   =  4;       // lines of each colour
 
-logic clk_pix, clk_10x, clk_pix_locked;
-logic [11 : 0] sx, sy;
-logic hsync, vsync;
-logic de, we;
-logic [23:0] buffIn;
-logic [addrLength-1:0] writeAddr, readAddr;
-logic [18:0] master;
+logic [11:0] bar_colr;  // 12 bit colour (4 bits per channel)
+logic bar_inc;  // increase (or decrease) brightness
+logic [$clog2(COLR_NUM):0] cnt_colr;  // count colours in each bar
+logic [$clog2(LINE_NUM):0] cnt_line;  // count lines of each colour
+logic[5:0] count = 0;
+clk_wiz_0 clk_wiz
+ (
+ // Clock out ports  
+ .clk_out1(clk_5x),
+ // Status and control signals               
+ .reset(rst), 
+ .locked(locked),
+// Clock in ports
+ .clk_in1(clk)
+ );
+  
+clk_div clk_gen(.clk(clk_5x), .rst, .clk_pix);
 
-always_ff @(posedge clk) begin
-    if(res == 1) begin
-        master = 371250;
-    end else begin
-        master = 125875;
-    end
-end
+scrn_pos scrn(.clk_pix(clk_pix), .rst, .res(2'b00), .sx(SX), .sy(SY), .hsync, .vsync, .de);
 
-//Clock generator
-clk_div clk_gen(clk, rst,  master, clk_pix, clk_10x, clk_pix_locked);
-
-//Generate screen position signals
-scrn_pos pos(clk_pix, rst, res, sx, sy, hsync, vsync, de);
+logic [7:0] count;
 
 always_ff @(posedge clk_pix) begin
-    //Check resolution to determine bounds
-    if(res == 2'b01) begin
-        //Check to see if in the active region
-        if(sx > 219) begin
-            if(sx < 1500) begin
-                if(sy > 19) begin
-                    if(sy < 740) begin
-                        we <= 1;
-                    end else begin
-                        we <= 0;
-                    end
-                end else begin
-                    we <= 0;
-                end
-            end else begin
-                we <= 0;
+    if (SX == WIDTH) begin  // on each screen line at the start of blanking
+        if (SY == HEIGHT-1) begin  // reset colour on last line of screen
+            bar_colr <= START_COLR;
+            bar_inc <= 1;  // start by increasing brightness
+            cnt_colr <= 0;
+            cnt_line <= 0 + count;
+            if(count == 8'b111011111) begin
+                count <= 8'b00000000;
+               end else begin
+                count <= count + 1;
             end
-        end else begin
-            we <= 0;
         end
-        //Calculate write address within the frame buffer
-        writeAddr <= WIDTH * sy + sx;
-        if(sx == 0 && sy == 0) begin
-            readAddr <= 0;
-        end else if (we) begin
-            readAddr <= readAddr + 1;
-        end
-    end else begin
-        if(sx > 47) begin
-            if(sx < 688) begin
-                if(sy > 32) begin
-                    if(sy < 513) begin
-                        we <= 1;
-                    end else begin
-                        we <= 0;
-                    end
-                end else begin
-                    we <= 0;
-                end
+        else if (cnt_line == LINE_NUM-1) begin  // colour complete
+            cnt_line <= 0;
+            if (cnt_colr == COLR_NUM-1) begin  // switch increase/decrease
+                bar_inc <= ~bar_inc;
+                cnt_colr <= 0;
             end else begin
-                we <= 0;
+                bar_colr <= (bar_inc) ? bar_colr + 12'h111 : bar_colr - 12'h111;
+                cnt_colr <= cnt_colr + 1;
             end
-        end else begin
-            we <= 0;
-        end
-        //Calculate write address within the frame buffer
-        writeAddr <= WIDTH * sy + sx;
-        if(sx == 0 && sy == 0) begin
-            readAddr <= 0;
-        end else if (we) begin
-            readAddr <= readAddr + 1;
-        end
+        end else cnt_line <= cnt_line + 1;
     end
 end
 
-//Framebuffer
-vram framebuffer(clk_pix, clk_pix, we, writeAddr, readAddr, dataIn, buffIn);
+// separate colour channels
+logic [3:0] paint_r, paint_g, paint_b;
+always_comb {paint_r, paint_g, paint_b} = bar_colr;
 
-//DVI encoder and generator
-dvi_generator gen(clk_pix, clk_10x, rst, de, buffIn[7:0], {hsync, vsync}, buffIn[15:8], 2'b00, buffIn[23:16], 2'b00, ch0, ch1, ch2, chc);
+// display colour: paint colour but black in blanking interval
+logic [3:0] display_r, display_g, display_b;
+always_comb begin
+    display_r = (de) ? paint_r : 4'h0;
+    display_g = (de) ? paint_g : 4'h0;
+    display_b = (de) ? paint_b : 4'h0;
+end
+
+logic [7:0] dvi_r,dvi_g, dvi_b;
+always_ff @(posedge clk_pix) begin
+    //Calculate write address within the frame buffer
+    dvi_r <= {2{display_r}};
+    dvi_g <= {2{display_g}};
+    dvi_b <= {2{display_b}};
+end
+logic [7:0] dvi_r,dvi_g, dvi_b;
+always_ff @(posedge clk_pix) begin
+    //Calculate write address within the frame buffer
+    dvi_r <= {2{display_r}};
+    dvi_g <= {2{display_g}};
+    dvi_b <= {2{display_b}};
+end
+
+dvi_generator gen(.clk(clk_pix), .clk_5x, .rst, .de, .blu(dvi_b), .grn(dvi_g), .red(dvi_r), .ctrl0({vsync, hsync}), .ctrl1(2'b00), .ctrl2(2'b0), .ch0_p, .ch0_n, .ch1_p, .ch1_n, .ch2_p, .ch2_n, .chc_p, .chc_n);
 
 endmodule
+
+

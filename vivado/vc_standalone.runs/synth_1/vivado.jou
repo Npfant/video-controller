@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Apr 24 23:04:36 2025
+# Process ID: 3107332
+# Current directory: /home/nfant/vc-standalone/vc_standalone/vc_standalone.runs/synth_1
+# Command line: vivado -log video_controller.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source video_controller.tcl
+# Log file: /home/nfant/vc-standalone/vc_standalone/vc_standalone.runs/synth_1/video_controller.vds
+# Journal file: /home/nfant/vc-standalone/vc_standalone/vc_standalone.runs/synth_1/vivado.jou
+# Running On: iscandar, OS: Linux, CPU Frequency: 1003.795 MHz, CPU Physical cores: 16, Host memory: 33321 MB
+#-----------------------------------------------------------
+source video_controller.tcl -notrace

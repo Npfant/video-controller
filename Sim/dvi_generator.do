@@ -27,7 +27,7 @@ if [file exists work] {
 vlib work
 
 # compile source files
-vlog ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Test/dvi_generator_tb.sv
+vlog ../Src/dvi_generator.sv ../Src/tmds_encoder.sv ../Src/serializer.sv ../Src/differential.sv ../Test/dvi_generator_tb.sv
 
 # start and run simulation
 vsim -voptargs=+acc work.stimulus 

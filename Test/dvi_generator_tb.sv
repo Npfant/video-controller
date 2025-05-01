@@ -1,6 +1,6 @@
 module stimulus();
 
-logic clk, clk_10x, rst, de, writeEn, readEn, ch0, ch1, ch2, chc;
+logic clk, clk_10x, rst, de, writeEn, readEn, ch0_p, ch0_n, ch1_p, ch1_n, ch2_p, ch2_n, chc_p, chc_n;
 logic [23:0] dataIn;
 logic [24:0] cycle;
 
@@ -17,9 +17,7 @@ initial begin
     de = 1;
 end
 
-dvi_generator test(
-    clk, clk_10x, rst, de, dataIn[7:0], 2'b11, dataIn[15:8], 2'b00, dataIn[23:16], 2'b00, ch0, ch1, ch2, chc
-);
+dvi_generator test(clk, clk_10x, rst, de, dataIn[7:0], 2'b11, dataIn[15:8], 2'b00, dataIn[23:16], 2'b00, ch0_p, ch0_n, ch1_p, ch1_n, ch2_p, ch2_n, chc_p, chc_n);
 
 always @ (posedge clk) begin
     if (rst) begin
